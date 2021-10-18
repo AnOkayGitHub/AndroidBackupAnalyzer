@@ -240,7 +240,7 @@ class Application(QMainWindow):
                     else:
                         pdf.cell(size, 5, txt=x, ln=1, align="L")
 
-                pdf.output(self.out_path + "\\" + self.out_name + ".pdf")
+                pdf.output(out[:-3] + ".pdf")
                 f.close()
                 os.remove(f_name)
 
