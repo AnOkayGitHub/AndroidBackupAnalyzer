@@ -195,20 +195,21 @@ class Application(QMainWindow):
                         if kw in d and d not in cleaned_data:
                             cleaned_data += d + "\n"
 
+            out = ""
             if self.sys == "Windows":
-                self.out_path + "\\" + self.out_name + ".txt"
+                out = "\\" + self.out_name + ".txt"
             else:
-                self.out_path + "/" + self.out_name + ".txt"
+                out = "/" + self.out_name + ".txt"
 
             if cleaned_data == "" and keyword_size > 0:
                 self.set_status("No keywords found in backup.", True)
             elif cleaned_data != "" and keyword_size > 0:
-                output = open(self.out_path + "\\" + self.out_name + ".txt", "w+", encoding="utf-8")
+                output = open(out, "w+", encoding="utf-8")
                 output.write(cleaned_data)
                 output.close()
                 self.set_status(format("File %s created at location:\n%s" % (self.out_name + self.get_out_type(), self.out_path)))
             elif keyword_size == 0:
-                output = open(self.out_path + "\\" + self.out_name + ".txt", "w+", encoding="utf-8")
+                output = open(out, "w+", encoding="utf-8")
                 output.write(data)
                 output.close()
                 self.set_status(format("File %s created at location:\n%s" % (self.out_name + self.get_out_type(), self.out_path)))
@@ -216,7 +217,7 @@ class Application(QMainWindow):
                 pdf = FPDF()
                 pdf.add_page()
                 pdf.set_font("Arial", size=8)
-                f_name = self.out_path + "\\" + self.out_name + ".txt"
+                f_name = out
 
                 f = open(f_name, "r")
                 size = 140
