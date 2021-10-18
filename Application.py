@@ -5,6 +5,7 @@ import sms_backup_reader as sbr
 import os
 from PyQt5.QtWidgets import *
 from fpdf import FPDF
+from platform import system
 
 
 # Class to handle all GUI related code
@@ -18,6 +19,7 @@ class Application(QMainWindow):
     tb_states = [1, 0, 0]
     tbs = []
     out_type = ".txt"
+    sys = system()
 
     # Constructor
     def __init__(self):
@@ -30,7 +32,7 @@ class Application(QMainWindow):
         try:
             self.desktop = os.path.join(os.path.join(os.environ["HOMEPATH"]), "OneDrive\Desktop")
         except Exception as e:
-            self.desktop = "\\"
+            self.desktop = "/"
 
         # Update initial values and connect functionality to buttons
         self.validate()
@@ -193,6 +195,11 @@ class Application(QMainWindow):
                         if kw in d and d not in cleaned_data:
                             cleaned_data += d + "\n"
 
+            if self.sys == "Windows":
+                self.out_path + "\\" + self.out_name + ".txt"
+            else:
+                self.out_path + "/" + self.out_name + ".txt"
+
             if cleaned_data == "" and keyword_size > 0:
                 self.set_status("No keywords found in backup.", True)
             elif cleaned_data != "" and keyword_size > 0:
@@ -205,7 +212,6 @@ class Application(QMainWindow):
                 output.write(data)
                 output.close()
                 self.set_status(format("File %s created at location:\n%s" % (self.out_name + self.get_out_type(), self.out_path)))
-
             if self.get_out_type() == ".pdf":
                 pdf = FPDF()
                 pdf.add_page()
@@ -232,8 +238,6 @@ class Application(QMainWindow):
 
                     else:
                         pdf.cell(size, 5, txt=x, ln=1, align="L")
-
-
 
                 pdf.output(self.out_path + "\\" + self.out_name + ".pdf")
                 f.close()
