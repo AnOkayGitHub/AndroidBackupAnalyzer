@@ -197,9 +197,9 @@ class Application(QMainWindow):
 
             out = ""
             if self.sys == "Windows":
-                out = "\\" + self.out_name + ".txt"
+                out = self.out_path + "\\" + self.out_name + ".txt"
             else:
-                out = "/" + self.out_name + ".txt"
+                out = self.out_path + "/" + self.out_name + ".txt"
 
             if cleaned_data == "" and keyword_size > 0:
                 self.set_status("No keywords found in backup.", True)
