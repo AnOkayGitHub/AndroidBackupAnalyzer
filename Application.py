@@ -222,7 +222,6 @@ class Application(QMainWindow):
                 f = open(f_name, "r")
                 size = 140
                 for x in f:
-                    print(x)
                     y = x.split(" ")
                     cell = ""
                     if len(x) > size:
@@ -233,7 +232,6 @@ class Application(QMainWindow):
                             else:
                                 pdf.cell(size, 5, txt=cell, ln=1, align="L")
                                 cell = word + " "
-                            print(cell)
                     if cell != "":
                         pdf.cell(size, 5, txt=cell, ln=1, align="L")
 
