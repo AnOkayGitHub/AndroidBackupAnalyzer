@@ -1,0 +1,586 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>mainwindow</class>
+ <widget class="QMainWindow" name="mainwindow">
+  <property name="windowModality">
+   <enum>Qt::NonModal</enum>
+  </property>
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>502</width>
+    <height>400</height>
+   </rect>
+  </property>
+  <property name="contextMenuPolicy">
+   <enum>Qt::DefaultContextMenu</enum>
+  </property>
+  <property name="windowTitle">
+   <string>Android Backup Analyzer</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
+  <widget class="QWidget" name="bgwidget">
+   <property name="styleSheet">
+    <string notr="true">QWidget#bgwidget {
+background-color: qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:1, fx:0.5, fy:0.5, stop:0 rgba(79, 86, 217, 255), stop:0.846591 rgba(0, 0, 0, 255));
+}</string>
+   </property>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>-10</y>
+      <width>501</width>
+      <height>71</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 22pt &quot;Gadugi&quot;;
+color: rgb(255, 255, 255);
+text-shadow: 20px 20px;
+</string>
+    </property>
+    <property name="text">
+     <string>Android Backup Analyzer</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="fileName">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>110</y>
+      <width>141</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLineEdit#fileName {
+	font: 8pt &quot;Gadugi&quot;;
+	background-color: transparent;
+	border-bottom: 1px solid white;
+    border-radius: 0px;
+	color:white;
+}</string>
+    </property>
+    <property name="readOnly">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="browseButton">
+    <property name="geometry">
+     <rect>
+      <x>180</x>
+      <y>110</y>
+      <width>71</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton#browseButton {
+	font: 8pt &quot;Gadugi&quot;;
+	background-color: rgba(255, 255, 255, 0.1);
+	border: 1px solid white;
+    border-radius: 5px;
+	color:white;
+	text-align: center;
+	padding-bottom:1%;
+}
+
+QPushButton#browseButton:hover {
+	font: 8pt &quot;Gadugi&quot;;
+	background-color: rgba(255, 255, 255, 0.2);
+	border: 1px solid white;
+    border-radius: 5px;
+	color:white;
+	text-align: center;
+	padding-bottom:1%;
+}
+
+
+</string>
+    </property>
+    <property name="text">
+     <string>Browse</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="analyzeButton">
+    <property name="geometry">
+     <rect>
+      <x>120</x>
+      <y>300</y>
+      <width>261</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton#analyzeButton {
+	font: 18pt &quot;Gadugi&quot;;
+	background-color: rgba(142, 255, 142, 0.2);
+	border: 2px solid rgb(142, 255, 142);
+    border-radius: 5px;
+	color: rgb(142, 255, 142);
+}
+
+QPushButton#analyzeButton:hover {
+	font: 18pt &quot;Gadugi&quot;;
+	background-color: rgba(142, 255, 142, 0.4);
+	border: 2px solid rgb(142, 255, 142);
+    border-radius: 5px;
+	color: rgb(142, 255, 142);
+}
+
+QPushButton#analyzeButton:disabled {
+	font: 18pt &quot;Gadugi&quot;;
+	background-color: rgba(255, 142, 142, 0.1);
+	border: 2px solid rgba(255, 142, 142, 0.2);
+    border-radius: 5px;
+	color: rgba(255, 142, 142, 0.3);
+}</string>
+    </property>
+    <property name="text">
+     <string>Analyze Backup</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="outputFilePath">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>170</y>
+      <width>141</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLineEdit#outputFilePath {
+	font: 8pt &quot;Gadugi&quot;;
+	background-color: transparent;
+	border-bottom: 1px solid white;
+    border-radius: 0px;
+	color:white;
+}</string>
+    </property>
+    <property name="readOnly">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="browseButton_2">
+    <property name="geometry">
+     <rect>
+      <x>180</x>
+      <y>170</y>
+      <width>75</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton#browseButton_2 {
+	font: 8pt &quot;Gadugi&quot;;
+	background-color: rgba(255, 255, 255, 0.1);
+	border: 1px solid white;
+    border-radius: 5px;
+	color:white;
+	text-align: center;
+	padding-bottom:1%;
+}
+
+QPushButton#browseButton_2:hover {
+	font: 8pt &quot;Gadugi&quot;;
+	background-color: rgba(255, 255, 255, 0.2);
+	border: 1px solid white;
+    border-radius: 5px;
+	color:white;
+	text-align: center;
+	padding-bottom:1%;
+}
+</string>
+    </property>
+    <property name="text">
+     <string>Browse</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_3">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>80</y>
+      <width>171</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 8pt &quot;Gadugi&quot;;
+color: rgb(255, 255, 255);</string>
+    </property>
+    <property name="text">
+     <string>XML File To Analyze</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_4">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>140</y>
+      <width>171</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 8pt &quot;Gadugi&quot;;
+color: rgb(255, 255, 255);</string>
+    </property>
+    <property name="text">
+     <string>Output Location</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="status">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>350</y>
+      <width>501</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 8pt &quot;Gadugi&quot;;
+color: rgb(255, 255, 255);</string>
+    </property>
+    <property name="text">
+     <string>File output.txt created at location:
+PATH</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+    <property name="wordWrap">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="outputFileName">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>230</y>
+      <width>141</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="layoutDirection">
+     <enum>Qt::LeftToRight</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLineEdit#outputFileName {
+	font: 8pt &quot;Gadugi&quot;;
+	background-color: transparent;
+	border-bottom: 1px solid white;
+    border-radius: 0px;
+	color:white;
+}</string>
+    </property>
+    <property name="text">
+     <string>output</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+    </property>
+    <property name="readOnly">
+     <bool>false</bool>
+    </property>
+    <property name="placeholderText">
+     <string>output</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_5">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>200</y>
+      <width>101</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 8pt &quot;Gadugi&quot;;
+color: rgb(255, 255, 255);</string>
+    </property>
+    <property name="text">
+     <string>Output File Name</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="keywordLabel">
+    <property name="geometry">
+     <rect>
+      <x>300</x>
+      <y>80</y>
+      <width>171</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 8pt &quot;Gadugi&quot;;
+color: rgb(255, 255, 255);</string>
+    </property>
+    <property name="text">
+     <string>Keyword Search</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="keywordInput">
+    <property name="geometry">
+     <rect>
+      <x>300</x>
+      <y>110</y>
+      <width>171</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Gadugi</family>
+      <pointsize>8</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLineEdit#keywordInput {
+	font: 8pt &quot;Gadugi&quot;;
+	background-color: transparent;
+	border: 1px solid white;
+    border-radius: 5px;
+	color:white;
+	padding-left:2%;
+	padding-top:2%;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+    </property>
+    <property name="readOnly">
+     <bool>false</bool>
+    </property>
+    <property name="placeholderText">
+     <string>database, money, etc</string>
+    </property>
+    <property name="clearButtonEnabled">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="tBody">
+    <property name="geometry">
+     <rect>
+      <x>300</x>
+      <y>170</y>
+      <width>171</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton#tBody {
+	font: 10pt &quot;Gadugi&quot;;
+	color: rgb(255, 255, 255);
+	background-color: rgba(142, 255, 142, 0.2);
+	border: 1px solid  rgb(142, 255, 142);
+    border-radius: 5px;
+	color:rgb(142, 255, 142);
+}
+
+QPushButton#tBody:hover {
+	font: 10pt &quot;Gadugi&quot;;
+	color: rgb(255, 255, 255);
+	background-color: rgba(142, 255, 142, 0.4);
+	border: 1px solid  rgb(142, 255, 142);
+    border-radius: 5px;
+	color:rgb(142, 255, 142);
+}</string>
+    </property>
+    <property name="text">
+     <string>Conversation Body</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="tDate">
+    <property name="geometry">
+     <rect>
+      <x>300</x>
+      <y>200</y>
+      <width>171</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton#tDate {
+	font: 10pt &quot;Gadugi&quot;;
+	background-color: rgba(255, 142, 142, 0.2);
+	border: 1px solid rgb(255, 142, 142);
+    border-radius: 5px;
+	color: rgb(255, 142, 142);
+}
+
+QPushButton#tDate:hover {
+	font: 10pt &quot;Gadugi&quot;;
+	background-color: rgba(255, 142, 142, 0.4);
+	border: 1px solid rgb(255, 142, 142);
+    border-radius: 5px;
+	color: rgb(255, 142, 142);
+}</string>
+    </property>
+    <property name="text">
+     <string>Message Dates</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="tName">
+    <property name="geometry">
+     <rect>
+      <x>300</x>
+      <y>230</y>
+      <width>171</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton#tName {
+	font: 10pt &quot;Gadugi&quot;;
+	background-color: rgba(255, 142, 142, 0.2);
+	border: 1px solid rgb(255, 142, 142);
+    border-radius: 5px;
+	color: rgb(255, 142, 142);
+}
+
+QPushButton#tName:hover {
+	font: 10pt &quot;Gadugi&quot;;
+	background-color: rgba(255, 142, 142, 0.4);
+	border: 1px solid rgb(255, 142, 142);
+    border-radius: 5px;
+	color: rgb(255, 142, 142);
+}</string>
+    </property>
+    <property name="text">
+     <string>Contact Name</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="keywordLabel_2">
+    <property name="geometry">
+     <rect>
+      <x>300</x>
+      <y>140</y>
+      <width>171</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 8pt &quot;Gadugi&quot;;
+color: rgb(255, 255, 255);</string>
+    </property>
+    <property name="text">
+     <string>Include:</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>20</y>
+      <width>501</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 22pt &quot;Gadugi&quot;;
+color: rgb(255, 255, 255);
+text-shadow: 20px 20px;
+</string>
+    </property>
+    <property name="text">
+     <string>_____________________________________________________________________________________</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="outTypeButton">
+    <property name="geometry">
+     <rect>
+      <x>180</x>
+      <y>230</y>
+      <width>41</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton#outTypeButton {
+                            font: 8pt &quot;Gadugi&quot;;
+                            background-color: rgba(0, 200, 200, 0.1);
+                            border: 1px solid rgb(0, 200, 200);
+                            border-radius: 5px;
+                            color: white;
+                            text-align: center;
+                            padding-bottom:1%;
+                        }
+                        
+                        QPushButton#outTypeButton:hover {
+                            font: 8pt &quot;Gadugi&quot;;
+                            background-color: rgba(0, 200, 200, 0.2);
+                            border: 1px solid rgb(0, 200, 200);
+                            border-radius: 5px;
+                            color: white;
+                            text-align: center;
+                            padding-bottom:1%;
+                        }</string>
+    </property>
+    <property name="text">
+     <string>.txt</string>
+    </property>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
