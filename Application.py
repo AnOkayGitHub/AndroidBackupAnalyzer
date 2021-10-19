@@ -6,6 +6,7 @@ import os
 from PyQt5.QtWidgets import *
 from fpdf import FPDF
 from platform import system
+import time
 
 
 # Class to handle all GUI related code
@@ -196,6 +197,9 @@ class Application(QMainWindow):
                             cleaned_data += d + "\n"
 
             out = ""
+            t = time.ctime()
+            intro = "This file was generated on " + t + " by Android Backup Analyzer"
+
             if self.sys == "Windows":
                 out = self.out_path + "\\" + self.out_name + ".txt"
             else:
@@ -205,40 +209,46 @@ class Application(QMainWindow):
                 self.set_status("No keywords found in backup.", True)
             elif cleaned_data != "" and keyword_size > 0:
                 output = open(out, "w+", encoding="utf-8")
-                output.write(cleaned_data)
+                output.write(intro + "\n" + cleaned_data)
                 output.close()
                 self.set_status(format("File %s created at location:\n%s" % (self.out_name + self.get_out_type(), self.out_path)))
             elif keyword_size == 0:
                 output = open(out, "w+", encoding="utf-8")
-                output.write(data)
+                output.write(intro + "\n" + data)
                 output.close()
                 self.set_status(format("File %s created at location:\n%s" % (self.out_name + self.get_out_type(), self.out_path)))
             if self.get_out_type() == ".pdf":
+                size = 140
                 pdf = FPDF()
                 pdf.add_page()
                 pdf.set_font("Arial", size=8)
+                pdf.cell(200, 40, txt=intro, ln=1, align="C")
                 f_name = out
 
                 f = open(f_name, "r")
-                size = 140
+                temp = 0
+
                 for x in f:
-                    y = x.split(" ")
-                    cell = ""
-                    if len(x) > size:
-                        for word in y:
-                            if len(cell + word) <= size:
-                                cell += word + " "
-
-                            else:
-                                pdf.cell(size, 5, txt=cell, ln=1, align="L")
-                                cell = word + " "
-                    if cell != "":
-                        pdf.cell(size, 5, txt=cell, ln=1, align="L")
-
+                    if temp < 1:
+                        temp += 1
                     else:
-                        pdf.cell(size, 5, txt=x, ln=1, align="L")
+                        y = x.split(" ")
+                        cell = ""
+                        if len(x) > size:
+                            for word in y:
+                                if len(cell + word) <= size:
+                                    cell += word + " "
 
-                pdf.output(out[:-3] + ".pdf")
+                                else:
+                                    pdf.cell(size, 5, txt=cell, ln=1, align="L")
+                                    cell = word + " "
+                        if cell != "":
+                            pdf.cell(size, 5, txt=cell, ln=1, align="L")
+
+                        else:
+                            pdf.cell(size, 5, txt=x, ln=1, align="L")
+
+                pdf.output(out[:-4] + ".pdf")
                 f.close()
                 os.remove(f_name)
 
